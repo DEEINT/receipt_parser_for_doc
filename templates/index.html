@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block header %}
+<a href="/info">Обновить информацию</a>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h2>Загрузка</h2>
+    <div style="margin: 0 35px;">
+        <form action method="post" id="form2" enctype="multipart/form-data">
+            <span>Загрузить чек:</span>
+            <input style="width: auto; display: inline;" type="file" name="file_send">
+        </form>
+    </div>
+    <button class="register" style="background: #ff5722; width: 100%;"
+        type="submit" form="form2">
+        <span style="position: static;">Отправить</span>
+    </button>
+</div>
+
+{% endblock %}

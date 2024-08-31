@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+	<h2>ЗАРЕГИСТРИРОВАТЬСЯ</h2>
+	<form action="/login" id="form1"></form>
+	<form action method="post" id="form2">
+        {{ form.hidden_tag() }}
+
+		{{ form.username(class_="email", placeholder_="Логин") }}
+		{% if form.username.errors %}
+		    {% for error in form.username.errors %}
+		        {{ error }}
+		    {% endfor %}
+		{% endif %}
+
+		{{ form.password(class_="pwd", placeholder_="Пароль") }}
+		{% if form.password.errors %}
+		    {% for error in form.password.errors %}
+		        <span style="color: red;">[{{ error }}]</span>
+		    {% endfor %}
+		{% endif %}
+
+        {{ form.password2(class_="pwd", placeholder_="Подтвердите пароль") }}
+		{% if form.password2.errors %}
+		    {% for error in form.password2.errors %}
+		        <span style="color: red;">[{{ error }}]</span>
+		    {% endfor %}
+		{% endif %}
+	</form>
+	<button class="signin" type="submit" form="form1">
+		<span>←ВОЙТИ</span>
+	</button>
+    <button class="register" type="submit" form="form2">
+		<span>РЕГИСТРАЦИЯ</span>
+	</button>
+</div>
+
+{% endblock %}

@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+{% block header %}
+<a href="/info">Обновить информацию</a>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h2>Данные обработаны</h2>
+    <div style="margin: 0 35px;">
+        <span>Файл готов к скачиванию: </span>
+        <a href="{{ url_for('download', filename='replased.docx') }}">Авансовый отчет</a>
+    
+        <form action method="post" id="form2" enctype="multipart/form-data">
+            <span>Добавить чек:</span>
+            <input style="width: auto; display: inline;" type="file" name="file_send">
+        </form>
+    </div>
+    <button class="register" style="background: #ff5722; width: 100%;"
+        type="submit" form="form2">
+        <span style="position: static;">Отправить</span>
+    </button>
+</div>
+
+{% endblock %}
+
+<!DOCTYPE html>
+<html>
+    <title>Получено</title>
+    <h1>
+    <form action="/">
+        <input type="submit" value="главная страница">
+    </form>
+    <form action="/info">
+        <input type="submit" value="обновить информацию">
+    </form>
+    </h1>
+    <h1>Изображение получено</h1>
+    <h4>Добавить чек
+        <form method="post" enctype="multipart/form-data"> 
+            <p>
+                <label for="file_send">Выбрать файл...</label>
+                <input type="file" name="file_send">
+            </p>
+
+            <p>
+                <input type="submit" value="Отправить изображение">
+            </p>
+        </form>
+    </h4>
+    <body>
+        Файл готов к скачиванию: 
+        <a href="{{ url_for('download', filename='replased.docx') }}">Авансовый отчет</a>
+    </body>
+    <p><a href="{{ url_for('logout') }}">Logout</a></p>
+</html>

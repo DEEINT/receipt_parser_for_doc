@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+	<h2>Информация</h2>
+	<form action method="post" id="form2">
+		{{ form.csrf_token }}
+		
+
+		{{ form.FIO(class_="text_field", placeholder_="ФИО", value=current_user.FIO) }}
+		{% if form.FIO.errors %}
+		    {% for error in form.FIO.errors %}
+		        {{ error }}
+		    {% endfor %}
+		{% endif %}
+
+		{{ form.phone(class_="text_field", placeholder_="Телефон", value=current_user.phone) }}
+		{% if form.phone.errors %}
+		    {% for error in form.phone.errors %}
+		        <span style="color: red;">[{{ error }}]</span>
+		    {% endfor %}
+		{% endif %}
+
+        {{ form.post(class_="text_field", placeholder_="Должность", value=current_user.post) }}
+		{% if form.post.errors %}
+		    {% for error in form.post.errors %}
+		        <span style="color: red;">[{{ error }}]</span>
+		    {% endfor %}
+		{% endif %}
+	</form>
+    <button class="register" style="background: #ff5722; width: 100%;" type="submit" form="form2">
+		<span style="position: static;">Изменить</span>
+	</button>
+</div>
+
+{% endblock %}
